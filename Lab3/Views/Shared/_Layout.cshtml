@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        @ViewBag.title
+        <h1>Welcome to Patrick Czermak's page, enjoy!</h1>
+        <br />
+        <br />
+        @Html.ActionLink("HOME", "Index", "Home") -
+        @Html.ActionLink("SHOW THE SONG", "Razor", "Home") -
+        @Html.ActionLink("CREATE A PERSON", "CreatePerson", "Home")
+    </header>
+    <div class="content">
+        @RenderBody()
+    </div>
+    <footer>
+        <a>a. _Layout.cshtml provides the header and footer to the page and a reference to the StyleSheet.css for formatting,  provides a link to each page of this site.</a>
+        <br />
+        <a>b. I put StyleSheet.css in the CSS folder within wwwwroot. _Layout.cshtml put in the Shared folder within Views folder as the Shared folder holds files utilized by other pages</a>
+    </footer>
+</body>
+</html>
