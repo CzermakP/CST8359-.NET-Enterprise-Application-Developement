@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/StyleSheet.css" />
+</head>
+<body>
+    <header>
+        <br />
+        <br />
+        @Html.ActionLink("HOME", "Index", "Home") -
+        @Html.ActionLink("STUDENT", "Index", "Students") - 
+        @Html.ActionLink("COMMUNITY", "Index", "Communities")
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+    @RenderSection("Scripts", required: false)
+    <footer>
+        <br />
+        <br />
+        <h3>Thanks for visiting :)</h3>
+    </footer>
+</body>
+</html>
