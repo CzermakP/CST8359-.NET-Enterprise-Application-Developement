@@ -1,0 +1,42 @@
+﻿@model Lab5.Models.AnswerImage
+
+@{
+    ViewData["Title"] = "Upload";
+}
+
+<h1>Answer Images UPLOAD</h1>
+<h3>
+    Upload an answer image here, select the appropriate radio button for your category choice
+</h3>
+<br />
+
+<div class="row">
+    <div class="form-group">
+        <form asp-action="Upload" enctype="multipart/form-data" method="post">
+            <div class="form-group">
+                <div class="custom-radio">
+                    <input type="radio" id="computer" name="answerType" value="1" checked/>
+                    What will a computer look like in 20 years from now?
+                    <br />
+                    <input type="radio" id="earth" name="answerType" value="0" />
+                    What will the earth look like in 20 years from now?
+                    <br />
+                </div>
+                <br />
+                <div class="btn-primary btn-sm float-left">
+                    <input name="AnswerImage" type="file" />
+                </div>
+                <br />
+                <div class="form-group">
+                    <button type="submit" name="upload" class="btn-primary btn-primary">UPLOAD NOW</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <br />
+    <a asp-action="Index">Back to answer images List</a>
+</div>
+
+

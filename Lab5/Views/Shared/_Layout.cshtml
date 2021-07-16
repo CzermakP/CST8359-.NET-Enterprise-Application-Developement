@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charsest="utf-8" />
+    <meta name="viewport" content="width=device-width, initial scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/site.css" />
+</head>
+<body>
+    <header>
+        <a>Lab 5</a>
+        <br />
+        <br />
+        @Html.ActionLink("HOME", "Index", "Home") -
+        @Html.ActionLink("ANSWERS", "Index", "AnswerImages")
+
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+    @RenderSection("Scripts", required: false)
+    <footer>
+        <br />
+        <h3>Thanks for visiting!</h3>
+    </footer>
+</body>
+</html>

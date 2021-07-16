@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Lab5.Models.AnswerImage>
+
+@{
+    ViewData["Title"] = "AnswerImagesIndex";
+}
+
+<h1>Answer Images INDEX</h1>
+
+<div>
+    @Html.ActionLink("Upload New", "Upload", "AnswerImages")
+</div>
+
+@if (Model.Count() == 0)
+{
+    <p>-- SORRY, There are NO Answer Images to display --</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FileName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Question)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Url)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var items in Model)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => items.FileName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => items.Question)
+                </td>
+                <td>
+                    <img src="@items.Url" style="max-width: 400px;" />
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@items.AnswerImageId">Delete</a>
+                </td>
+            </tr>
+                }
+        </tbody>
+    </table>
+}
