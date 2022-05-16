@@ -22,5 +22,18 @@ namespace Lab4.Models
             get;
             set;
         }
+
+       public Student Student
+
+        {
+            get;
+            set;
+        }
+
+        public Community Community
+        {
+            get;
+            set;
+        }
     }
 }

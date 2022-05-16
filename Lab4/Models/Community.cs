@@ -40,5 +40,6 @@ namespace Lab4.Models
             get; 
             set; 
         }
+
     }
 }

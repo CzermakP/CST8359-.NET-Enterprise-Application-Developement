@@ -1,4 +1,4 @@
-﻿@model Lab4.Models.ViewModels.CommunityViewModel 
+﻿@model Lab4.Models.ViewModels.CommunityViewModel
     <!-- IEnumerable<Lab4.Models.Community> -->
 
 @{
@@ -26,25 +26,52 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Communities) 
+        @foreach (var item in Model.Communities)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Budget)
-            </td>
-            <td>
-                <a asp-action="Index" asp-route-id="@item.Id">Select</a> |
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Budget)
+                </td>
+                <td>
+                    <a asp-action="Index" asp-route-id="@item.Id">Select</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
+<!-- need to add display secion HERE for the output of the students beelonging to the "selected" community 
+    * if the memberships are not empty, then loop through the memberships and display the students full name
+     that belong to the selected membership -->
+@if (Model.Memberships != null)
+{
+        <table class="table">
+            <tbody>
+                @foreach (var members in Model.Memberships)  
+                { 
+                    <tr>
+                        @if (Model.Memberships.Count() > 0)
+                        {
+                            <td>
+                                @Html.DisplayFor(ModelItem => members.Student.FullName)
+                            </td>
+                        }
+                        else
+                        {
+                            <h2>
+                                No Students belong to the selected Membership!
+                            </h2>
+                        }
+                    </tr>
+                 }
+            </tbody>
+        </table>
+}

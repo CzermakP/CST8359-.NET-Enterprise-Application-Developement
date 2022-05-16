@@ -21,23 +21,26 @@ namespace Lab4.Controllers
         }
 
         // GET: Communities
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? Id)
         {
             var viewModel = new CommunityViewModel();
-            viewModel.Communities = await _context.Communities.ToListAsync();
-            viewModel.Memberships = await _context.Memberships.ToListAsync();
-            viewModel.Students = await _context.Students
+            //viewModel.Students = await _context.Students.ToListAsync(); NA because linked now
+            //viewModel.Memberships = await _context.Memberships.ToListAsync();
+            viewModel.Communities = await _context.Communities
                 .Include(i => i.Memberships)
+                .ThenInclude(j => j.Student)
                 .AsNoTracking()
-                .OrderBy(i => i.LastName)
+                .OrderBy(i => i.Title)
                 .ToListAsync();
 
-             // ViewData["Students"] = Id;
-             // viewModel.Memberships = viewModel.Students.Where(
-             //     x => x.Id == Id).Single().Students;
+            if (Id != null)
+            { 
+                 ViewData["Students"] = Id;
+                 viewModel.Memberships = viewModel.Communities.Where(
+                     x => x.Id == Id).Single().Memberships;
+            }
 
             return View(viewModel);
-            //return View(await _context.Communities.ToListAsync()); // to update to CommunityViewModel
         }
 
         
